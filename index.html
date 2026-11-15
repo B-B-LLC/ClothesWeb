@@ -1,0 +1,518 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Clothes — Gardırop ve kombin uygulaması</title>
+    <meta
+      name="description"
+      content="Clothes gardırobunu tanır, her sabah havaya göre kombin önerir ve giydiğin kombini beş eksende puanlar. iPhone ve Android için." />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Clothes — Bugün ne giysem?" />
+    <meta
+      property="og:description"
+      content="Gardırobundan, havaya göre kombin önerisi ve beş eksende kombin puanı." />
+    <meta name="theme-color" content="#F3EDE7" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#15100C" media="(prefers-color-scheme: dark)" />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="preload" href="fonts/EBGaramond_400Regular.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="fonts/DMSans_500Medium.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- İkonlar: tek yerde tanımlı, sayfada <use> ile çağrılıyor. -->
+    <svg width="0" height="0" style="position: absolute" aria-hidden="true">
+      <symbol id="i-home" viewBox="0 0 24 24">
+        <path d="M4 11.1 12 4l8 7.1V19a1 1 0 0 1-1 1h-4.6v-5.2H9.6V20H5a1 1 0 0 1-1-1z" />
+      </symbol>
+      <symbol id="i-hanger" viewBox="0 0 24 24">
+        <path d="M10 6.6a2 2 0 1 1 2.9 1.8c-.6.3-.9.7-.9 1.3v.7" />
+        <path d="m12 10.4 8.1 5.4a1.2 1.2 0 0 1-.7 2.2H4.6a1.2 1.2 0 0 1-.7-2.2z" />
+      </symbol>
+      <symbol id="i-camera" viewBox="0 0 24 24">
+        <path
+          d="M4 8.6A1.6 1.6 0 0 1 5.6 7h2.1l1.2-2h6.2l1.2 2h2.1A1.6 1.6 0 0 1 20 8.6v8.8a1.6 1.6 0 0 1-1.6 1.6H5.6A1.6 1.6 0 0 1 4 17.4z" />
+        <circle cx="12" cy="13" r="3.2" />
+      </symbol>
+      <symbol id="i-person" viewBox="0 0 24 24">
+        <circle cx="12" cy="8.4" r="3.6" />
+        <path d="M5 20c.6-3.5 3.4-5.4 7-5.4s6.4 1.900 7 5.400" />
+      </symbol>
+      <symbol id="i-pin" viewBox="0 0 24 24">
+        <path d="M12 21s6.500-5.600 6.500-10.500a6.500 6.500 0 1 0-13 0C5.500 15.400 12 21 12 21z" />
+        <circle cx="12" cy="10.500" r="2.300" />
+      </symbol>
+      <symbol id="i-sun-cloud" viewBox="0 0 24 24">
+        <circle cx="9" cy="8.500" r="3" />
+        <path d="M9 2.800v1.200M3.300 8.500h1.200M4.900 4.400l.9.9M13.100 4.400l-.9.9" />
+        <path d="M9.500 20h7.300a3.200 3.200 0 0 0 .5-6.360 4.500 4.500 0 0 0-8.700.96A2.720 2.720 0 0 0 9.500 20z" />
+      </symbol>
+      <symbol id="i-rain" viewBox="0 0 24 24">
+        <path d="M7.500 15h9.300a3.400 3.400 0 0 0 .5-6.760 4.800 4.800 0 0 0-9.300 1.020A2.880 2.880 0 0 0 7.500 15z" />
+        <path d="m8.500 18-.8 2M12.300 18l-.8 2M16.100 18l-.8 2" />
+      </symbol>
+      <symbol id="i-umbrella" viewBox="0 0 24 24">
+        <path d="M12 3v1.500M4 12.500a8 8 0 0 1 16 0zM12 12.500V19a2 2 0 0 0 4 0" />
+      </symbol>
+      <symbol id="i-download" viewBox="0 0 24 24">
+        <path d="M12 4v11M7.500 10.500 12 15l4.500-4.500M5 20h14" />
+      </symbol>
+      <symbol id="i-phone" viewBox="0 0 24 24">
+        <rect x="7" y="3" width="10" height="18" rx="2.600" />
+        <path d="M10.800 18h2.400" />
+      </symbol>
+      <symbol id="i-thermo" viewBox="0 0 24 24">
+        <path d="M12 3.500a2 2 0 0 0-2 2v8.700a4 4 0 1 0 4 0V5.500a2 2 0 0 0-2-2z" />
+        <path d="M12 9v7.500" />
+      </symbol>
+      <symbol id="i-battery" viewBox="0 0 26 14">
+        <rect x="1" y="1.500" width="21" height="11" rx="3.500" />
+        <rect x="3" y="3.500" width="17" height="7" rx="2" fill="currentColor" stroke="none" />
+        <path d="M24.500 5v4" />
+      </symbol>
+
+      <!-- Giysi çizimleri: gövde parçanın kendi renginde (currentColor), dikiş çizgileri --seam. -->
+      <symbol id="g-kazak" viewBox="0 0 100 100">
+        <path fill="currentColor" stroke="var(--garment-edge)" d="M36 17c5 6 23 6 28 0l16 8 14 37-12 5-8-21v41H26V46l-8 21-12-5 14-37z" />
+        <path fill="none" stroke="var(--seam)" d="M36 17c5 9 23 9 28 0M26 81h48M9.500 56l11 4.500M90.500 56l-11 4.500" />
+      </symbol>
+      <symbol id="g-gomlek" viewBox="0 0 100 100">
+        <path fill="currentColor" stroke="var(--garment-edge)" d="M38 12l12 7 12-7 18 10 12 38-12 4-6-20v44H26V44l-6 20-12-4 12-38z" />
+        <path fill="none" stroke="var(--seam)" d="M38 12l7 15 5-8 5 8 7-15M50 19v69M11 51l11 3.500M89 51l-11 3.500" />
+        <g fill="var(--seam)"><circle cx="50" cy="35" r="1.400" /><circle cx="50" cy="49" r="1.400" /><circle cx="50" cy="63" r="1.400" /><circle cx="50" cy="77" r="1.400" /></g>
+      </symbol>
+      <symbol id="g-hirka" viewBox="0 0 100 100">
+        <path fill="currentColor" stroke="var(--garment-edge)" d="M36 14l14 30 14-30 16 10 14 38-12 5-8-21v42H26V46l-8 21-12-5 14-38z" />
+        <path fill="none" stroke="var(--seam)" d="M50 44v44M26 82h48M9.500 56l11 4.500M90.500 56l-11 4.500M41 16l9 20 9-20" />
+        <g fill="var(--seam)"><circle cx="54" cy="54" r="1.500" /><circle cx="54" cy="66" r="1.500" /><circle cx="54" cy="78" r="1.500" /></g>
+      </symbol>
+      <symbol id="g-kaban" viewBox="0 0 100 100">
+        <path fill="currentColor" stroke="var(--garment-edge)" d="M38 8l12 8 12-8 18 11 12 44-12 4-6-22 2 49H24l2-49-6 22-12-4 12-44z" />
+        <path fill="none" stroke="var(--seam)" d="M38 8l6 26 6-9 6 9 6-26M50 25v69M30 68h12M58 68h12" />
+        <g fill="var(--seam)"><circle cx="54.500" cy="44" r="1.700" /><circle cx="54.500" cy="58" r="1.700" /></g>
+      </symbol>
+      <symbol id="g-kot" viewBox="0 0 100 100">
+        <path fill="currentColor" stroke="var(--garment-edge)" d="M30 10h40l7 82H56l-6-52-6 52H23z" />
+        <path fill="none" stroke="var(--seam)" d="M29.500 17.500h41M50 17.500V32M33 18c1 7 5 10 10 10M67 18c-1 7-5 10-10 10M24 86h20.500M55.500 86H76" />
+      </symbol>
+      <symbol id="g-bot" viewBox="0 0 100 100">
+        <path fill="currentColor" stroke="var(--garment-edge)" d="M31 12h21c1.200 0 2 .8 2 2v36c0 6 4 8 13 10 9 2 14 6 14 14v10H58v-4H46v4H31z" />
+        <path fill="none" stroke="var(--seam)" d="M31 76h50M40 22c-1 11 0 21 3 30M47 22c1 11 0 21-2 30" />
+      </symbol>
+      <symbol id="g-sneaker" viewBox="0 0 100 100">
+        <path fill="currentColor" stroke="var(--garment-edge)" d="M12 40c6 3 12 2 16-3l20 15c6 4 14 6 24 7 10 1 16 5 16 12v5H12z" />
+        <path fill="none" stroke="var(--seam)" d="M12 68h76M33 41l-4 5M39 45.500l-4 5M45 50l-4 5M51 53.500l-3 5" />
+      </symbol>
+    </svg>
+
+    <header class="site-header">
+      <div class="wrap">
+        <a class="wordmark" href="#ust">Clothes</a>
+        <nav class="site-nav" aria-label="Sayfa içi">
+          <a href="#ozellikler">Özellikler</a>
+          <a href="#nasil">Nasıl çalışır</a>
+          <a href="#ayrintilar">Ayrıntılar</a>
+        </nav>
+        <a class="btn btn--primary btn--compact" href="#indir">İndir</a>
+      </div>
+    </header>
+
+    <main id="ust">
+      <!-- Açılış -->
+      <section class="hero">
+        <div class="wrap">
+          <div class="hero__copy">
+            <p class="t-label">GARDIROP VE KOMBİN</p>
+            <h1 class="t-display">Bugün ne giysem? <em>Cevabı kendi gardırobunda.</em></h1>
+            <p class="t-body hero__lead">
+              Parçalarını bir kez fotoğrafla. Clothes her sabah havaya bakar, gardırobundan bir kombin önerir ve
+              giydiğini beş eksende puanlar.
+            </p>
+            <div class="actions">
+              <a class="btn btn--primary" href="#indir" data-store="ios">
+                <svg class="icon"><use href="#i-download" /></svg>
+                App Store’dan indir
+              </a>
+              <a class="btn btn--secondary" href="#indir" data-store="android">
+                <svg class="icon"><use href="#i-download" /></svg>
+                Google Play’den indir
+              </a>
+            </div>
+            <p class="t-caption">iPhone ve Android için · Türkçe</p>
+          </div>
+
+          <div class="hero__stage">
+            <!-- iOS Ana Sayfa: uygulamadaki bileşenlerin aynısı. -->
+            <div
+              class="phone"
+              role="img"
+              aria-label="Clothes’un iPhone’daki Ana Sayfa ekranı: Ankara için hava özeti ve dört parçalık ilk kombin önerisi.">
+              <div class="phone__screen" aria-hidden="true">
+                <div class="ios-status">
+                  <span>9:41</span>
+                  <span class="ios-status__island"></span>
+                  <svg class="icon"><use href="#i-battery" /></svg>
+                </div>
+
+                <div class="ios-body">
+                  <div class="ios-nav">
+                    <span class="ios-toolbar-btn">
+                      <svg class="icon"><use href="#i-person" /></svg>
+                    </span>
+                  </div>
+                  <div class="ios-title">Ana Sayfa</div>
+
+                  <div class="card card--obsidian">
+                    <div class="weather__top">
+                      <span class="weather__temp">12°</span>
+                      <span class="weather__text">
+                        <span class="weather__place">
+                          <svg class="icon"><use href="#i-pin" /></svg>
+                          Ankara
+                        </span>
+                        <span class="weather__meta">Parçalı bulutlu · Hissedilen 12°</span>
+                      </span>
+                      <span class="weather__glass">
+                        <svg class="icon"><use href="#i-sun-cloud" /></svg>
+                      </span>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="weather__bottom">
+                      <span class="weather__meta">Günlük sıcaklık: <b>8° / 16°</b></span>
+                      <span class="weather__meta weather__meta--accent">Nem %54 · Rüzgar 11 km/s</span>
+                    </div>
+                  </div>
+
+                  <div class="card">
+                    <div class="row">
+                      <span class="t-headline">1. öneri</span>
+                      <span class="pill pill--strong">Hava için uygun</span>
+                    </div>
+                    <div class="tiles">
+                      <div class="tile">
+                        <div class="tile__frame"><svg class="tile__art" style="color: #d9ccb7;"><use href="#g-kazak" /></svg></div>
+                        <span class="tile__label">Kazak</span>
+                      </div>
+                      <div class="tile">
+                        <div class="tile__frame"><svg class="tile__art" style="color: #34455e; --seam: rgba(255, 255, 255, 0.3);"><use href="#g-kot" /></svg></div>
+                        <span class="tile__label">Kot</span>
+                      </div>
+                      <div class="tile">
+                        <div class="tile__frame"><svg class="tile__art" style="color: #a8845a;"><use href="#g-kaban" /></svg></div>
+                        <span class="tile__label">Kaban</span>
+                      </div>
+                      <div class="tile">
+                        <div class="tile__frame"><svg class="tile__art" style="color: #3a2a22; --seam: rgba(255, 255, 255, 0.3);"><use href="#g-bot" /></svg></div>
+                        <span class="tile__label">Bot</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="ios-tabbar">
+                  <span class="ios-tab ios-tab--active">
+                    <svg class="icon icon--fill"><use href="#i-home" /></svg>
+                    Ana Sayfa
+                  </span>
+                  <span class="ios-tab">
+                    <svg class="icon"><use href="#i-hanger" /></svg>
+                    Gardırobum
+                  </span>
+                  <span class="ios-tab">
+                    <svg class="icon"><use href="#i-camera" /></svg>
+                    Puanla
+                  </span>
+                  <span class="ios-tab">
+                    <svg class="icon"><use href="#i-person" /></svg>
+                    Profil
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Özellikler -->
+      <section class="section" id="ozellikler">
+        <div class="wrap">
+          <div class="section__head">
+            <p class="t-label">ÖZELLİKLER</p>
+            <h2 class="t-section">Üç iş, tek gardırop</h2>
+          </div>
+
+          <div class="grid-3">
+            <article class="card feature">
+              <div class="feature__copy">
+                <p class="t-label">GARDIROBUM</p>
+                <h3 class="t-subtitle">Dolabın cebinde</h3>
+                <p class="t-small">
+                  Parçalarını tek tek ya da 20’ye kadar toplu ekle. Tür, renk ve desen kendiliğinden etiketlenir; emin
+                  olunamayan parça “kontrol et” diye işaretlenir.
+                </p>
+              </div>
+              <div class="feature__demo" aria-hidden="true">
+                <span class="t-caption">24 parça</span>
+                <div class="chips">
+                  <span class="chip chip--selected">Tümü</span>
+                  <span class="chip">Üst</span>
+                  <span class="chip">Alt</span>
+                  <span class="chip">Ayakkabı</span>
+                  <span class="chip">Dış katman</span>
+                </div>
+                <div class="tiles">
+                  <div class="tile">
+                    <div class="tile__frame"><svg class="tile__art" style="color: #b9c6d3;"><use href="#g-gomlek" /></svg></div>
+                    <span class="tile__label">Gömlek</span>
+                    <span class="tile__sub">Üst · düz</span>
+                  </div>
+                  <div class="tile">
+                    <div class="tile__frame"><svg class="tile__art" style="color: #6f7a5c; --seam: rgba(255, 255, 255, 0.3);"><use href="#g-hirka" /></svg></div>
+                    <span class="tile__label">Hırka</span>
+                    <span class="tile__sub tile__sub--emphasis">kontrol et</span>
+                  </div>
+                  <div class="tile">
+                    <div class="tile__frame"><svg class="tile__art" style="color: #34455e; --seam: rgba(255, 255, 255, 0.3);"><use href="#g-kot" /></svg></div>
+                    <span class="tile__label">Kot</span>
+                    <span class="tile__sub">Alt · düz</span>
+                  </div>
+                  <div class="tile">
+                    <div class="tile__frame"><svg class="tile__art" style="color: #ece7de;"><use href="#g-sneaker" /></svg></div>
+                    <span class="tile__label">Sneaker</span>
+                    <span class="tile__sub">Ayakkabı · düz</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="card feature">
+              <div class="feature__copy">
+                <p class="t-label">ANA SAYFA</p>
+                <h3 class="t-subtitle">Havaya göre kombin</h3>
+                <p class="t-small">
+                  Hissedilen sıcaklığa, yağışa ve rüzgara bakar; günün kombinini kendi parçalarından kurar. Akşam
+                  “Nasıldı?” diye sorar, cevabınla sana göre ayarlanır.
+                </p>
+              </div>
+              <div class="feature__demo" aria-hidden="true">
+                <div class="card card--obsidian">
+                  <div class="weather__top">
+                    <span class="weather__temp">6°</span>
+                    <span class="weather__text">
+                      <span class="weather__place">
+                        <svg class="icon"><use href="#i-pin" /></svg>
+                        İstanbul
+                      </span>
+                      <span class="weather__meta">Yağmurlu · Hissedilen 3°</span>
+                    </span>
+                    <span class="weather__glass">
+                      <svg class="icon"><use href="#i-rain" /></svg>
+                    </span>
+                  </div>
+                </div>
+                <div class="row">
+                  <span class="t-headline">1. öneri</span>
+                  <span class="pill pill--strong">Hava için uygun</span>
+                </div>
+                <div class="tiles tiles--four">
+                  <div class="tile"><div class="tile__frame"><svg class="tile__art" style="color: #d9ccb7;"><use href="#g-kazak" /></svg></div></div>
+                  <div class="tile"><div class="tile__frame"><svg class="tile__art" style="color: #34455e; --seam: rgba(255, 255, 255, 0.3);"><use href="#g-kot" /></svg></div></div>
+                  <div class="tile"><div class="tile__frame"><svg class="tile__art" style="color: #a8845a;"><use href="#g-kaban" /></svg></div></div>
+                  <div class="tile"><div class="tile__frame"><svg class="tile__art" style="color: #3a2a22; --seam: rgba(255, 255, 255, 0.3);"><use href="#g-bot" /></svg></div></div>
+                </div>
+                <span class="t-small" style="color: var(--text)">Kazak · Kot · Kaban · Bot</span>
+                <div class="meter">
+                  <div class="meter__labels">
+                    <span class="t-caption">İnce</span>
+                    <span class="t-caption">Kalın</span>
+                  </div>
+                  <div class="meter__track"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span></span></div>
+                </div>
+                <div class="note">
+                  <svg class="icon"><use href="#i-umbrella" /></svg>
+                  <span class="t-small">Su geçirmez parça yok — yanına şemsiye al.</span>
+                </div>
+                <div class="divider"></div>
+                <span class="t-headline">Nasıldı?</span>
+                <div class="chips">
+                  <span class="chip">Üşüdüm</span>
+                  <span class="chip chip--selected">Tam iyiydi</span>
+                  <span class="chip">Terledim</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="card feature">
+              <div class="feature__copy">
+                <p class="t-label">PUANLA</p>
+                <h3 class="t-subtitle">Beş eksende puan</h3>
+                <p class="t-small">
+                  Kombininin fotoğrafını çek, vesileyi seç. Renk uyumundan detaya beş eksende puan ve yapıcı bir yorum
+                  al; skor kartını paylaş.
+                </p>
+              </div>
+              <div class="feature__demo" aria-hidden="true">
+                <div class="card card--obsidian">
+                  <span class="t-label" style="color: var(--obsidian-textSecondary)">KOMBİN PUANI</span>
+                  <div class="weather__top">
+                    <span class="weather__temp">84</span>
+                    <span class="weather__text">
+                      <span class="weather__place">Günlük</span>
+                      <span class="weather__meta">Renkler dengeli, silüet temiz.</span>
+                    </span>
+                  </div>
+                </div>
+                <div class="progress">
+                  <div class="progress__head"><span>Renk uyumu</span><b>88</b></div>
+                  <div class="progress__track"><div class="progress__fill" style="width: 88%"></div></div>
+                </div>
+                <div class="progress">
+                  <div class="progress__head"><span>Oran ve silüet</span><b>82</b></div>
+                  <div class="progress__track"><div class="progress__fill" style="width: 82%"></div></div>
+                </div>
+                <div class="progress">
+                  <div class="progress__head"><span>Bağlam uygunluğu</span><b>90</b></div>
+                  <div class="progress__track"><div class="progress__fill" style="width: 90%"></div></div>
+                </div>
+                <div class="progress">
+                  <div class="progress__head"><span>Bütünlük ve özen</span><b>80</b></div>
+                  <div class="progress__track"><div class="progress__fill" style="width: 80%"></div></div>
+                </div>
+                <div class="progress">
+                  <div class="progress__head"><span>Detay</span><b>76</b></div>
+                  <div class="progress__track"><div class="progress__fill" style="width: 76%"></div></div>
+                </div>
+                <div class="divider"></div>
+                <span class="t-label">YORUM</span>
+                <span class="t-small">
+                  Kaban ve bot aynı tonda, bütünlük iyi. Kazağı bir ton açarsan katmanlar daha net ayrılır.
+                </span>
+                <span class="btn btn--secondary">Paylaş</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Nasıl çalışır -->
+      <section class="section" id="nasil">
+        <div class="wrap">
+          <div class="section__head">
+            <p class="t-label">NASIL ÇALIŞIR</p>
+            <h2 class="t-section">Bir kez yükle, her gün kullan</h2>
+          </div>
+
+          <div class="card steps">
+            <div class="step">
+              <span class="step__no">1</span>
+              <h3 class="t-headline">Fotoğrafla</h3>
+              <p class="t-small">
+                Parçalarını çek ya da galeriden seç. Etiketleme arka planda sürer, sen eklemeye devam edersin.
+              </p>
+            </div>
+            <div class="step">
+              <span class="step__no">2</span>
+              <h3 class="t-headline">Öneriye bak</h3>
+              <p class="t-small">
+                Ana Sayfa’da günün havası ve ilk öneri seni bekler. Beğenmezsen diğer önerilere geç.
+              </p>
+            </div>
+            <div class="step">
+              <span class="step__no">3</span>
+              <h3 class="t-headline">Puanla ve paylaş</h3>
+              <p class="t-small">Giydiğin kombinin fotoğrafını puanlat, skor kartını istediğin yerde paylaş.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Ayrıntılar -->
+      <section class="section" id="ayrintilar">
+        <div class="wrap">
+          <div class="section__head">
+            <p class="t-label">AYRINTILAR</p>
+            <h2 class="t-section">Küçük ama önemli</h2>
+          </div>
+
+          <div class="grid-3">
+            <div class="card card--flat detail">
+              <span class="detail__icon">
+                <svg class="icon"><use href="#i-phone" /></svg>
+              </span>
+              <h3 class="t-headline">Bağlantı yokken de açılır</h3>
+              <p class="t-small">
+                Gardırobun telefonunda saklanır. Kayıtlı parçaların ve puan sonuçların internet olmadan da karşında.
+              </p>
+            </div>
+            <div class="card card--flat detail">
+              <span class="detail__icon">
+                <svg class="icon"><use href="#i-thermo" /></svg>
+              </span>
+              <h3 class="t-headline">Sana göre ayarlanır</h3>
+              <p class="t-small">
+                Üşüdüğünü söyledikçe öneriler kalınlaşır, terlediğini söyledikçe incelir. İstediğinde sıfırlarsın.
+              </p>
+            </div>
+            <div class="card card--flat detail">
+              <span class="detail__icon">
+                <svg class="icon"><use href="#i-pin" /></svg>
+              </span>
+              <h3 class="t-headline">Yaklaşık konum yeter</h3>
+              <p class="t-small">
+                Hava için yalnızca yaklaşık konumun, uygulamayı kullanırken alınır. İstersen şehri elle seçersin.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- İndir -->
+      <section class="section" id="indir">
+        <div class="wrap">
+          <div class="card card--obsidian cta">
+            <h2 class="t-section">Gardırobunu bir kez yükle.</h2>
+            <p class="t-body">Yarın sabah ne giyeceğini Clothes önersin.</p>
+            <div class="actions">
+              <a class="btn btn--onDarkPrimary" href="#indir" data-store="ios">
+                <svg class="icon"><use href="#i-download" /></svg>
+                App Store’dan indir
+              </a>
+              <a class="btn btn--onDark" href="#indir" data-store="android">
+                <svg class="icon"><use href="#i-download" /></svg>
+                Google Play’den indir
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <span class="wordmark">Clothes</span>
+        <span class="t-caption">iPhone ve Android için gardırop ve kombin uygulaması · © 2026</span>
+      </div>
+    </footer>
+
+    <script>
+      /*
+       * MAĞAZA BAĞLANTILARI
+       * Uygulama yayınlanınca bu iki satırı doldur; sayfadaki bütün
+       * "App Store" ve "Google Play" düğmeleri buradan beslenir.
+       * Boş kalan düğme sayfanın "İndir" bölümüne gider.
+       */
+      var STORE_URLS = {
+        ios: '', // App Store adresi
+        android: '', // Google Play adresi
+      };
+
+      document.querySelectorAll('[data-store]').forEach(function (link) {
+        var url = STORE_URLS[link.getAttribute('data-store')];
+        if (url) {
+          link.href = url;
+          link.rel = 'noopener';
+        }
+      });
+    </script>
+  </body>
+</html>
