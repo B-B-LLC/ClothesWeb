@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sayfa bulunamadı — Clothes</title>
+    <meta name="robots" content="noindex" />
+    <meta name="theme-color" content="#F3EDE7" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#15100C" media="(prefers-color-scheme: dark)" />
+    <!-- Bu sayfa her adreste açılabildiği için yollar köke göre (/...) yazıldı. -->
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/styles.css" />
+    <style>
+      /* Bu sayfada sayfa içi menü yok: düğmeyi sağa o itmiyor. Footer da alta otursun. */
+      body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+      main {
+        flex: 1;
+        display: flex;
+        align-items: center;
+      }
+      main > .section {
+        flex: 1;
+      }
+      .site-header .btn {
+        margin-left: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="wrap">
+        <a class="wordmark" href="/">Clothes</a>
+        <a class="btn btn--primary btn--compact" href="/#indir">İndir</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="section">
+        <div class="wrap">
+          <div class="card card--obsidian cta">
+            <p class="t-label" style="color: var(--obsidian-textSecondary)">404</p>
+            <h1 class="t-section">Bu sayfa gardıropta yok.</h1>
+            <p class="t-body">Aradığın adres taşınmış ya da hiç olmamış olabilir.</p>
+            <div class="actions">
+              <a class="btn btn--onDarkPrimary" href="/">Ana sayfaya dön</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <span class="wordmark">Clothes</span>
+        <span class="t-caption">iPhone ve Android için gardırop ve kombin uygulaması · © 2026</span>
+      </div>
+    </footer>
+  </body>
+</html>
