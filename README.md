@@ -10,11 +10,22 @@ sayfanın düzenidir.
 
 ```
 index.html     sayfa
+404.html       bulunamayan adresler için sayfa
 styles.css     ortak: tasarım token'ları, bileşenler, telefon ekranları (üç dalda aynı)
 design.css     bu tasarımın sayfa düzeni
 favicon.svg
 fonts/         EB Garamond ve DM Sans (Türkçe Latin alt kümesi, SIL OFL)
+vercel.json    Vercel ayarları
 ```
+
+## Vercel
+
+Repo Vercel'e bağlı; `main`'e her push yayına çıkar, diğer dallar (bu dal dahil)
+önizleme adresi alır. Derleme adımı yok, kök dizin olduğu gibi yayınlanır.
+Ayarlar `vercel.json` içinde; `.vercelignore` README'yi yayından çıkarır.
+
+Bulunamayan her adreste `404.html` açılır; bu sayfa her yolda çalışsın diye
+içindeki bağlantılar köke göre (`/styles.css`) yazıldı.
 
 ## Mağaza bağlantıları
 
