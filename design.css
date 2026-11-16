@@ -1,0 +1,325 @@
+/*
+ * Tasarım 2 — Obsidyen.
+ * Açılış ve ayrıntılar koyu obsidyen bantta (uygulamadaki hava ve puanlama
+ * kartlarının yüzeyi); dört telefon açılıştan sayfaya taşar, her sekme kendi
+ * afiş kartında anlatılır.
+ */
+
+/* ---------- Koyu açılış bandı ---------- */
+
+.d2-top {
+  background-color: #26160f;
+  background-image: var(--obsidian);
+  color: var(--obsidian-text);
+}
+
+.d2-header {
+  position: static;
+  border-bottom-color: var(--obsidian-divider);
+  background: transparent;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+
+.d2-header .site-nav a {
+  color: var(--obsidian-textSecondary);
+}
+
+.d2-header .site-nav a:hover {
+  color: var(--obsidian-text);
+}
+
+.d2-hero {
+  padding-top: 76px;
+  text-align: center;
+}
+
+.d2-hero .wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+}
+
+.d2-hero .t-display em,
+.d2-band .t-section em {
+  color: var(--obsidian-accent);
+}
+
+.d2-hero .t-body {
+  max-width: 34em;
+  font-size: 18px;
+  line-height: 28px;
+  color: var(--obsidian-textSecondary);
+}
+
+.d2-hero .t-caption {
+  color: var(--obsidian-textSecondary);
+}
+
+/* Dört telefon bandın alt kenarından sayfaya taşar. */
+.d2-fan {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  margin: 60px 0 -250px;
+  padding: 0 24px;
+}
+
+.d2-fan__item {
+  margin: 0 -13px;
+}
+
+.d2-fan__item--1 {
+  transform: rotate(-5deg) translateY(30px);
+}
+
+.d2-fan__item--2 {
+  z-index: 1;
+  transform: rotate(-1.5deg);
+}
+
+.d2-fan__item--3 {
+  z-index: 1;
+  transform: rotate(1.5deg);
+}
+
+.d2-fan__item--4 {
+  transform: rotate(5deg) translateY(30px);
+}
+
+.d2-after-fan {
+  padding-top: 340px;
+}
+
+/* ---------- Afiş kartları: her sekme için bir tane ---------- */
+
+.d2-posters {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.d2-poster {
+  flex-direction: row;
+  gap: 20px;
+  height: 452px;
+  padding: 28px 28px 0;
+  overflow: hidden;
+}
+
+.d2-poster__copy {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+}
+
+.d2-poster__copy .bullets {
+  margin-top: 8px;
+}
+
+/* Telefonun üst kısmı görünür; alt kenarı kart kesiyor. */
+.d2-poster__crop {
+  flex: none;
+  padding-top: 8px;
+}
+
+/* ---------- Adımlar: zaman çizgisi ---------- */
+
+.d2-steps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 36px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.d2-step {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.d2-step__no {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  margin-bottom: 8px;
+  border-radius: var(--radius-full);
+  background: var(--espresso);
+  color: var(--onEspresso);
+  font-family: var(--font-serif);
+  font-size: 24px;
+  line-height: 1;
+}
+
+.d2-step:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 26px;
+  right: -24px;
+  left: 66px;
+  height: 1px;
+  background: var(--border);
+}
+
+/* ---------- Koyu ayrıntı bandı ---------- */
+
+.d2-band {
+  margin-bottom: 104px;
+  padding: 88px 0;
+  background-color: #26160f;
+  background-image: var(--obsidian);
+  color: var(--obsidian-text);
+}
+
+.d2-band__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.d2-band__item {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 4px 32px;
+  border-left: 1px solid var(--obsidian-divider);
+}
+
+.d2-band__item:first-child {
+  padding-left: 0;
+  border-left: 0;
+}
+
+.d2-band__item .weather__glass {
+  margin-bottom: 6px;
+}
+
+/* ---------- Kapanış ---------- */
+
+.d2-cta .wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  text-align: center;
+}
+
+.d2-cta .actions {
+  justify-content: center;
+  margin-top: 8px;
+}
+
+/* ---------- Dar ekran ---------- */
+
+@media (max-width: 1000px) {
+  .d2-posters {
+    grid-template-columns: minmax(0, 1fr);
+    max-width: 560px;
+    margin: 0 auto;
+  }
+
+  .d2-steps {
+    grid-template-columns: minmax(0, 1fr);
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  .d2-step::after {
+    display: none;
+  }
+
+  .d2-band .section__head {
+    max-width: none;
+    margin-right: 0;
+    margin-left: 0;
+  }
+
+  .d2-band__grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 28px;
+  }
+
+  .d2-band__item {
+    padding: 28px 0 0;
+    border-top: 1px solid var(--obsidian-divider);
+    border-left: 0;
+  }
+
+  .d2-band__item:first-child {
+    padding-top: 0;
+    border-top: 0;
+  }
+}
+
+/* Dört telefon yan yana sığmayınca ikişerli iki sıra. */
+@media (max-width: 1040px) {
+  .d2-fan {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 16px;
+    margin-bottom: -220px;
+  }
+
+  .d2-fan__item {
+    margin: 0;
+    transform: none;
+  }
+
+  .d2-after-fan {
+    padding-top: 296px;
+  }
+}
+
+@media (max-width: 860px) {
+  .d2-hero {
+    padding-top: 48px;
+  }
+
+  .d2-band {
+    margin-bottom: 72px;
+    padding: 64px 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .d2-hero .t-body {
+    font-size: 16px;
+    line-height: 25px;
+  }
+
+  .d2-fan {
+    gap: 12px;
+    margin-top: 44px;
+    margin-bottom: -180px;
+    padding: 0 16px;
+  }
+
+  .d2-fan .phone {
+    --pz: 0.38 !important;
+  }
+
+  .d2-after-fan {
+    padding-top: 244px;
+  }
+
+  .d2-poster {
+    flex-direction: column;
+    height: auto;
+    padding: 24px 20px 0;
+  }
+
+  .d2-poster__crop {
+    align-self: center;
+    height: 380px;
+    padding-top: 20px;
+  }
+}

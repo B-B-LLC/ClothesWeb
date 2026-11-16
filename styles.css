@@ -140,7 +140,7 @@
     --header: rgba(21, 16, 12, 0.82);
     --bezel: #060403;
     --glow: rgba(217, 160, 106, 0.12);
-    --garment-edge: rgba(255, 255, 255, 0.22);
+    --garment-edge: rgba(255, 255, 255, 0.36);
   }
 }
 
@@ -867,7 +867,7 @@ svg {
   width: 417px;
   padding: 12px;
   border-radius: 64px;
-  zoom: 0.8;
+  zoom: var(--pz, 0.8);
   background: var(--bezel);
   box-shadow: 0 40px 70px -28px rgba(46, 28, 20, 0.5), 0 14px 30px -12px rgba(46, 28, 20, 0.28),
     inset 0 0 0 1.5px rgba(255, 255, 255, 0.14);
@@ -1064,7 +1064,7 @@ svg {
 
 @media (max-width: 380px) {
   .phone {
-    zoom: 0.68;
+    --pz: 0.68;
   }
 }
 
@@ -1076,4 +1076,210 @@ svg {
   .btn {
     transition: none;
   }
+}
+
+/* ---------- Dört sekmenin ekranları (telefonun içi) ---------- */
+
+/* Sağ üst eylemi olmayan sekmelerde de gezinme çubuğu yer tutar. */
+.ios-nav {
+  min-height: 46px;
+}
+
+.ios-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ios-section > .t-label {
+  padding: 0 4px;
+}
+
+/* Gardırobum: yatay kayan filtreler ve iki sütun 3:4 ızgara */
+.chips--scroll {
+  flex-wrap: nowrap;
+  margin-right: -16px;
+  overflow: hidden;
+}
+
+.chips--scroll .chip {
+  flex: none;
+}
+
+.tiles--grid {
+  gap: 24px 12px;
+}
+
+.tiles--grid .tile__frame {
+  aspect-ratio: 3 / 4;
+}
+
+.tiles--grid .tile__sub {
+  margin-top: -6px;
+}
+
+/* Puanla: obsidyen başlık kartı */
+.score-kicker {
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 16px;
+  letter-spacing: 1.3px;
+  color: var(--obsidian-accent);
+}
+
+.score-title {
+  font-family: var(--font-serif);
+  font-size: 26px;
+  font-weight: 500;
+  line-height: 32px;
+  letter-spacing: -0.3px;
+}
+
+.score-body {
+  font-size: 14px;
+  line-height: 21px;
+  color: var(--obsidian-textSecondary);
+}
+
+.score-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.score-actions .btn {
+  flex: 1 1 140px;
+  padding: 8px 16px;
+}
+
+.history {
+  flex-direction: row;
+  align-items: center;
+  gap: 14px;
+  padding: 10px;
+}
+
+.history__thumb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 72px;
+  border-radius: var(--radius-md);
+  background: var(--backgroundSelected);
+}
+
+.history__thumb .tile__art {
+  width: 82%;
+  height: 82%;
+}
+
+.history__text {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.history__score {
+  font-family: var(--font-serif);
+  font-size: 26px;
+  font-weight: 500;
+  line-height: 30px;
+  font-variant-numeric: tabular-nums;
+}
+
+.history__score small {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--textSecondary);
+}
+
+.history > .icon {
+  width: 16px;
+  height: 16px;
+  color: var(--textSecondary);
+}
+
+/* Profil: hesap kartı ve tercih grupları */
+.account {
+  flex-direction: row;
+  align-items: center;
+}
+
+.account__avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-full);
+  background: var(--espresso);
+  color: var(--onEspresso);
+}
+
+.account__avatar .icon {
+  width: 26px;
+  height: 26px;
+}
+
+.account__text {
+  display: flex;
+  flex-direction: column;
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.bullets {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.bullets li {
+  display: flex;
+  gap: 10px;
+  font-size: 14px;
+  line-height: 21px;
+  color: var(--textSecondary);
+}
+
+.bullets .icon {
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  color: var(--accent);
+}
+
+/* Telefonun içi sayfanın değil uygulamanın renklerini kullanır (koyu bantta da). */
+.phone__screen {
+  color: var(--text);
+  text-align: left;
+}
+
+/* İçerik sekme çubuğunun altından akarken kenarda solar (iOS kaydırma kenarı). */
+.phone__screen::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 120px;
+  background: linear-gradient(to bottom, transparent, var(--background) 72%);
+  pointer-events: none;
+}
+
+.ios-tabbar {
+  z-index: 1;
+}
+
+.score-actions .btn {
+  padding: 8px 10px;
+  white-space: nowrap;
 }
