@@ -7,7 +7,12 @@
     <meta
       name="description"
       content="Clothes gardırobunu tanır, her sabah havaya göre kombin önerir ve giydiğin kombini beş eksende puanlar. iPhone ve Android için." />
+    <link rel="alternate" hreflang="tr" href="https://clothesweb-one.vercel.app/" />
+    <link rel="alternate" hreflang="en" href="https://clothesweb-one.vercel.app/en" />
+    <link rel="alternate" hreflang="x-default" href="https://clothesweb-one.vercel.app/" />
     <meta property="og:type" content="website" />
+    <meta property="og:locale" content="tr_TR" />
+    <meta property="og:locale:alternate" content="en_US" />
     <meta property="og:title" content="Clothes — Bugün ne giysem?" />
     <meta
       property="og:description"
@@ -113,6 +118,7 @@
           <a href="#nasil">Nasıl çalışır</a>
           <a href="#ayrintilar">Ayrıntılar</a>
         </nav>
+        <a class="lang-switch" href="/en" hreflang="en" lang="en" aria-label="English version">EN</a>
         <a class="btn btn--primary btn--compact" href="#indir">İndir</a>
       </div>
     </header>
@@ -494,25 +500,7 @@
       </div>
     </footer>
 
-    <script>
-      /*
-       * MAĞAZA BAĞLANTILARI
-       * Uygulama yayınlanınca bu iki satırı doldur; sayfadaki bütün
-       * "App Store" ve "Google Play" düğmeleri buradan beslenir.
-       * Boş kalan düğme sayfanın "İndir" bölümüne gider.
-       */
-      var STORE_URLS = {
-        ios: '', // App Store adresi
-        android: '', // Google Play adresi
-      };
-
-      document.querySelectorAll('[data-store]').forEach(function (link) {
-        var url = STORE_URLS[link.getAttribute('data-store')];
-        if (url) {
-          link.href = url;
-          link.rel = 'noopener';
-        }
-      });
-    </script>
+    <!-- Mağaza adresleri store-links.js içinde; İngilizce sayfa da aynı dosyayı kullanır. -->
+    <script src="store-links.js"></script>
   </body>
 </html>

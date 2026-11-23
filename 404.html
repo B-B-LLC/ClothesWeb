@@ -31,10 +31,14 @@
     </style>
   </head>
   <body>
+    <!--
+      Türkçe metin sayfada, İngilizcesi data-en içinde. Adres /en ile başlıyorsa
+      alttaki betik İngilizceye çevirir (data-en-href bağlantıları da değişir).
+    -->
     <header class="site-header">
       <div class="wrap">
-        <a class="wordmark" href="/">Clothes</a>
-        <a class="btn btn--primary btn--compact" href="/#indir">İndir</a>
+        <a class="wordmark" href="/" data-en-href="/en">Clothes</a>
+        <a class="btn btn--primary btn--compact" href="/#indir" data-en-href="/en#download" data-en="Download">İndir</a>
       </div>
     </header>
 
@@ -43,10 +47,12 @@
         <div class="wrap">
           <div class="card card--obsidian cta">
             <p class="t-label" style="color: var(--obsidian-textSecondary)">404</p>
-            <h1 class="t-section">Bu sayfa gardıropta yok.</h1>
-            <p class="t-body">Aradığın adres taşınmış ya da hiç olmamış olabilir.</p>
+            <h1 class="t-section" data-en="This page isn’t in the wardrobe.">Bu sayfa gardıropta yok.</h1>
+            <p class="t-body" data-en="The address may have moved, or it never existed.">
+              Aradığın adres taşınmış ya da hiç olmamış olabilir.
+            </p>
             <div class="actions">
-              <a class="btn btn--onDarkPrimary" href="/">Ana sayfaya dön</a>
+              <a class="btn btn--onDarkPrimary" href="/" data-en-href="/en" data-en="Back to the home page">Ana sayfaya dön</a>
             </div>
           </div>
         </div>
@@ -56,8 +62,23 @@
     <footer class="site-footer">
       <div class="wrap">
         <span class="wordmark">Clothes</span>
-        <span class="t-caption">iPhone ve Android için gardırop ve kombin uygulaması · © 2026</span>
+        <span class="t-caption" data-en="Wardrobe and outfit app for iPhone and Android · © 2026">
+          iPhone ve Android için gardırop ve kombin uygulaması · © 2026
+        </span>
       </div>
     </footer>
+
+    <script>
+      if (/^\/en(\/|$)/.test(location.pathname)) {
+        document.documentElement.lang = 'en';
+        document.title = 'Page not found — Clothes';
+        document.querySelectorAll('[data-en]').forEach(function (el) {
+          el.textContent = el.getAttribute('data-en');
+        });
+        document.querySelectorAll('[data-en-href]').forEach(function (el) {
+          el.href = el.getAttribute('data-en-href');
+        });
+      }
+    </script>
   </body>
 </html>

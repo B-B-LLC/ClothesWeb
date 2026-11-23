@@ -707,6 +707,21 @@ svg {
   color: var(--text);
 }
 
+/* Dil bağlantısı: Türkçe sayfada "EN", İngilizce sayfada "TR". */
+.lang-switch {
+  padding: 12px 0;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: 0.6px;
+  color: var(--textSecondary);
+  text-decoration: none;
+}
+
+.lang-switch:hover {
+  color: var(--text);
+}
+
 /* ---------- Bölümler ---------- */
 
 .hero {
@@ -1044,6 +1059,15 @@ svg {
 
   .site-header .btn {
     margin-left: auto;
+  }
+
+  /* Menü gizlenince dil bağlantısı düğmeyle birlikte sağa yaslanır. */
+  .site-header .lang-switch {
+    margin-left: auto;
+  }
+
+  .site-header .lang-switch + .btn {
+    margin-left: 0;
   }
 
   .hero__lead {
