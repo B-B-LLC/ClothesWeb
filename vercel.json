@@ -4,6 +4,17 @@
   "outputDirectory": ".",
   "cleanUrls": true,
   "trailingSlash": false,
+  "redirects": [
+    { "source": "/en", "destination": "/clothes", "permanent": true },
+    { "source": "/en/:path*", "destination": "/clothes", "permanent": true },
+    { "source": "/gizlilik", "destination": "/tr/gizlilik", "permanent": true },
+    { "source": "/kosullar", "destination": "/tr/kosullar", "permanent": true },
+    { "source": "/hesap-silme", "destination": "/tr/hesap-silme", "permanent": true },
+    { "source": "/destek", "destination": "/tr/destek", "permanent": true },
+    { "source": "/privacy-policy", "destination": "/privacy", "permanent": true },
+    { "source": "/terms-of-use", "destination": "/terms", "permanent": true },
+    { "source": "/tr/clothes", "destination": "/tr", "permanent": true }
+  ],
   "headers": [
     {
       "source": "/(.*)",
@@ -19,7 +30,7 @@
       "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
     },
     {
-      "source": "/favicon.svg",
+      "source": "/(favicon.svg|images/.*)",
       "headers": [{ "key": "Cache-Control", "value": "public, max-age=86400" }]
     }
   ]

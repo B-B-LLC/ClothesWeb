@@ -1,5 +1,5 @@
 /*
- * Clothes tanıtım sitesi — "Warm Editorial Wardrobe".
+ * Shinify LLC sitesi ve Clothes tanıtım sayfaları — "Warm Editorial Wardrobe".
  *
  * Renk, gölge, köşe ve boşluk değerleri src/constants/theme.ts ile aynı;
  * bileşen ölçüleri src/components/ui/ içindeki karşılıklarından alındı.
@@ -860,17 +860,81 @@ svg {
   margin-top: 8px;
 }
 
+/* ---------- Alt bilgi ---------- */
+
 .site-footer {
   border-top: 1px solid var(--border);
-  padding: 28px 0 40px;
+  padding: 48px 0 36px;
 }
 
-.site-footer .wrap {
+.footer {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+  gap: 40px 64px;
+}
+
+.footer__about {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+  max-width: 26em;
+}
+
+.footer__address {
+  font-style: normal;
+}
+
+.footer__address strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.footer__address a,
+.footer__links a {
+  color: var(--textSecondary);
+  text-decoration: none;
+}
+
+.footer__address a:hover,
+.footer__links a:hover {
+  color: var(--text);
+  text-decoration: underline;
+}
+
+.footer__links {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.footer__links ul {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 12px 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+.footer__base {
   display: flex;
   flex-wrap: wrap;
-  align-items: baseline;
   justify-content: space-between;
   gap: 8px 24px;
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+
+.footer__base a {
+  text-decoration: none;
+}
+
+.footer__base a:hover {
+  color: var(--text);
 }
 
 /* ---------- Telefon: iOS kabuğu ---------- */
@@ -1006,6 +1070,443 @@ svg {
   font-weight: 600;
 }
 
+/* ---------- Şirket sayfaları ---------- */
+
+/* Marka: Shinify yıldızı ve kelime işareti */
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.brand__mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  background: var(--espresso);
+  color: var(--onEspresso);
+}
+
+.brand__mark .icon {
+  width: 18px;
+  height: 18px;
+}
+
+.site-nav a[aria-current='page'] {
+  color: var(--text);
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 8px;
+}
+
+/* Henüz doldurulmamış şirket bilgisi (src/company.mjs) */
+mark.todo {
+  padding: 0 4px;
+  border-radius: 4px;
+  background: #ffe58a;
+  color: #231b15;
+  font: inherit;
+}
+
+.pill--soon {
+  background: var(--espresso);
+  color: var(--onEspresso);
+  vertical-align: 1px;
+}
+
+.page-hero {
+  padding: 64px 0 56px;
+}
+
+.page-hero .wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 18px;
+}
+
+.page-hero a {
+  color: var(--accentStrong);
+}
+
+.t-display--page {
+  max-width: 16em;
+  font-size: clamp(38px, 5vw, 58px);
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--accentStrong);
+  text-decoration: none;
+}
+
+.link-arrow:hover {
+  text-decoration: underline;
+}
+
+.link-arrow .icon {
+  width: 18px;
+  height: 18px;
+}
+
+/* Bağlantı kartları: Politikalar, Destek */
+.link-card {
+  text-decoration: none;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.link-card:hover {
+  border-color: var(--accent);
+  background-color: var(--backgroundElement);
+}
+
+/* Ürün kartı (Ana Sayfa) */
+.product {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  align-items: center;
+  gap: 40px;
+  padding: 32px;
+}
+
+.product__copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.product__head {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.product__demo {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.app-icon {
+  display: block;
+  flex: none;
+  border-radius: 23%;
+  box-shadow: 0 8px 18px -8px rgba(46, 28, 20, 0.5);
+}
+
+/* Ürün satırı (Hakkında) */
+.product-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 18px;
+  padding: 18px 20px;
+  text-decoration: none;
+}
+
+.product-row__text {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.product-row > .icon {
+  color: var(--accentStrong);
+}
+
+/* Künye: tanım listesi */
+.facts {
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+  margin: 0;
+  font-size: 15px;
+  line-height: 22px;
+}
+
+.facts > div {
+  display: grid;
+  grid-template-columns: minmax(130px, 0.7fr) minmax(0, 1.3fr);
+  gap: 16px;
+  padding: 12px 0;
+  border-top: 1px solid var(--border);
+}
+
+.facts > div:last-child {
+  border-bottom: 1px solid var(--border);
+}
+
+.facts dt {
+  color: var(--textSecondary);
+}
+
+.facts dd {
+  margin: 0;
+  font-weight: 500;
+  overflow-wrap: anywhere;
+}
+
+.facts a,
+.contact-line a,
+.prose a,
+.faq a,
+.detail .t-small a {
+  color: var(--accentStrong);
+}
+
+.facts--compact {
+  font-size: 14px;
+  line-height: 21px;
+}
+
+.facts--compact > div {
+  grid-template-columns: 110px minmax(0, 1fr);
+  padding: 8px 0;
+}
+
+/* Şirket bilgileri kartı (Ana Sayfa, İletişim) */
+.company {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  align-items: start;
+  gap: 40px;
+  padding: 32px;
+}
+
+.company__intro {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.address {
+  font-style: normal;
+  color: var(--text);
+}
+
+.company-card {
+  gap: 18px;
+  padding: 24px;
+}
+
+.split {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.95fr);
+  align-items: start;
+  gap: 56px;
+}
+
+.person {
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+  padding: 20px;
+}
+
+.person .detail__icon {
+  margin: 0;
+}
+
+.contact-line {
+  margin-top: 4px;
+  font-size: 16px;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+/* Destek */
+.support-card {
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+  padding: 24px 28px;
+}
+
+.support-card__text {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.faq {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 820px;
+}
+
+.faq__item {
+  gap: 0;
+  padding: 0;
+}
+
+.faq__item summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 20px;
+  cursor: pointer;
+  list-style: none;
+}
+
+.faq__item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq__toggle {
+  position: relative;
+  flex: none;
+  width: 14px;
+  height: 14px;
+}
+
+.faq__toggle::before,
+.faq__toggle::after {
+  content: '';
+  position: absolute;
+  top: 6px;
+  left: 0;
+  width: 14px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--accentStrong);
+  transition: transform 0.2s ease;
+}
+
+.faq__toggle::after {
+  transform: rotate(90deg);
+}
+
+.faq__item[open] .faq__toggle::after {
+  transform: rotate(0deg);
+}
+
+.faq__item p {
+  padding: 0 20px 20px;
+  color: var(--text);
+  font-size: 15px;
+  line-height: 24px;
+}
+
+.faq__item b {
+  font-weight: 600;
+}
+
+/* Yasal metinler */
+.doc {
+  display: grid;
+  grid-template-columns: 250px minmax(0, 1fr);
+  align-items: start;
+  gap: 48px;
+}
+
+.doc--single {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.toc {
+  position: sticky;
+  top: 88px;
+  gap: 10px;
+  padding: 20px;
+}
+
+.toc ol {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 0;
+  padding-left: 18px;
+  color: var(--textSecondary);
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.toc a {
+  color: var(--textSecondary);
+  text-decoration: none;
+}
+
+.toc a:hover {
+  color: var(--text);
+  text-decoration: underline;
+}
+
+.prose {
+  max-width: 44em;
+  color: var(--text);
+  font-size: 16px;
+  line-height: 26px;
+}
+
+.prose h2 {
+  margin: 0 0 10px;
+  font-family: var(--font-serif);
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 34px;
+  letter-spacing: -0.3px;
+}
+
+.prose h2:not(:first-child) {
+  margin-top: 36px;
+}
+
+.prose p,
+.prose ul {
+  margin: 0 0 12px;
+}
+
+.prose ul {
+  padding-left: 22px;
+}
+
+.prose li + li {
+  margin-top: 6px;
+}
+
+.prose b {
+  font-weight: 600;
+}
+
+.doc__body > section {
+  padding: 28px 0;
+  border-top: 1px solid var(--border);
+}
+
+.doc__body > section:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.doc__body > section h2 {
+  margin-top: 0;
+}
+
+.page-404 {
+  padding-top: 72px;
+}
+
 /* ---------- Dar ekran ---------- */
 
 @media (max-width: 1000px) {
@@ -1031,6 +1532,25 @@ svg {
     border-top: 1px solid var(--border);
     border-left: 0;
   }
+
+  .product,
+  .company,
+  .split {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .product__demo {
+    max-width: 440px;
+  }
+
+  .doc {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 32px;
+  }
+
+  .toc {
+    position: static;
+  }
 }
 
 @media (max-width: 860px) {
@@ -1046,6 +1566,18 @@ svg {
   .section {
     padding-bottom: 72px;
   }
+
+  .page-hero {
+    padding: 44px 0 40px;
+  }
+
+  .grid-2 {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .footer {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 
 @media (max-width: 640px) {
@@ -1053,8 +1585,48 @@ svg {
     padding: 0 16px;
   }
 
+  /* Menü ikinci satıra iner. */
+  .site-header .wrap {
+    flex-wrap: wrap;
+    gap: 0 16px;
+  }
+
   .site-nav {
-    display: none;
+    order: 3;
+    width: 100%;
+    margin: 0;
+    gap: 22px;
+    overflow-x: auto;
+    border-top: 1px solid var(--border);
+  }
+
+  .site-nav a {
+    padding: 10px 0;
+  }
+
+  .footer__links {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .product,
+  .company {
+    padding: 20px;
+  }
+
+  .facts > div,
+  .facts--compact > div {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2px;
+  }
+
+  .support-card {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 24px 20px;
+  }
+
+  .support-card .btn {
+    align-self: stretch;
   }
 
   .site-header .btn {

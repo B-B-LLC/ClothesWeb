@@ -1,0 +1,628 @@
+{
+  "source": "Clothes/src/features/legal/documents.ts",
+  "version": 1,
+  "updated": {
+    "tr": "22 Kasım 2026",
+    "en": "November 22, 2026"
+  },
+  "docs": {
+    "tr": {
+      "privacy": {
+        "key": "privacy",
+        "title": "Gizlilik Politikası",
+        "slug": "gizlilik",
+        "sections": [
+          {
+            "heading": "Özet",
+            "blocks": [
+              {
+                "kind": "p",
+                "text": "Clothes gardırobunu cihazında saklar. Sunucuya yalnızca yedekleme, cihazlar arası eşitleme ve yapay zekâ analizi için gereken veri gider. Reklam göstermiyoruz, verini satmıyoruz ve seni uygulamalar arasında izlemiyoruz."
+              }
+            ]
+          },
+          {
+            "heading": "Hangi verileri işliyoruz",
+            "blocks": [
+              {
+                "kind": "list",
+                "items": [
+                  "Hesap: cihazda açılan misafir hesap kimliği; giriş yaparsan e-posta adresin ya da Apple/Google’dan gelen ad ve e-posta.",
+                  "Gardırop: parça fotoğrafları ve etiketleri (kategori, renk, desen, kumaş tahmini, resmiyet, sıcaklık değeri).",
+                  "Kombinler: puanlattığın kombinin skoru ve yorumu, fotoğrafın parmak izi (aynı fotoğrafa aynı skoru vermek için). Kombin fotoğrafı sunucuda saklanmaz, yalnızca cihazında durur.",
+                  "Giyim günlüğü ve tercihler: hangi gün ne giydiğin, \"Nasıldı?\" cevapların, günlük tarz ve dışarıda kalma süresi tercihin.",
+                  "Konum: yalnızca uygulama açıkken, kaba (şehir seviyesinde) konum; yaklaşık 1 km’ye yuvarlanıp hava durumu için kullanılır, saklanmaz. İstersen konum yerine şehir seçebilirsin.",
+                  "Abonelik: Pro aboneliğinin durumu ve bitiş tarihi.",
+                  "Teknik: çökme raporları; izin verirsen kullanım istatistikleri."
+                ]
+              }
+            ]
+          },
+          {
+            "heading": "Neden işliyoruz",
+            "blocks": [
+              {
+                "kind": "list",
+                "items": [
+                  "Gardırobunu kurmak ve fotoğraftan parçayı tanımak (etiketleme).",
+                  "Hava durumuna göre kombin önermek; öneriler cihazında hesaplanır.",
+                  "İstediğin kombini puanlamak ve yorumlamak.",
+                  "Telefon değiştirdiğinde gardırobunu geri yüklemek.",
+                  "Aboneliği ve aylık kullanım sınırlarını yönetmek.",
+                  "Hataları bulup düzeltmek ve (izin verirsen) uygulamayı geliştirmek."
+                ]
+              },
+              {
+                "kind": "p",
+                "text": "Puanlama yalnızca kıyafetler hakkındadır: beden, yüz, görünüm ya da fiziksel özellikler yorumlanmaz ve bu tür bilgiler üretilmez."
+              }
+            ]
+          },
+          {
+            "heading": "Kimlerle paylaşıyoruz",
+            "blocks": [
+              {
+                "kind": "p",
+                "text": "Veriyi yalnızca hizmeti bizim adımıza yürüten şu sağlayıcılarla, gereken kadarıyla paylaşıyoruz:"
+              },
+              {
+                "kind": "list",
+                "items": [
+                  "Supabase (barındırma, veritabanı, dosya depolama; AB/İrlanda bölgesi): hesap, gardırop, kombin ve kullanım kayıtları, parça fotoğrafları.",
+                  "Anthropic (yapay zekâ ile görsel analiz; ABD): parça fotoğrafı etiketleme ve kombin puanlama için gönderilen fotoğraflar. Fotoğraflar model eğitiminde kullanılmaz.",
+                  "Open-Meteo (hava durumu): yaklaşık 1 km’ye yuvarlanmış konum. Kim olduğun gönderilmez.",
+                  "RevenueCat (abonelik yönetimi; ABD) ile Apple ve Google: satın alma kayıtları ve hesap kimliğin. Ödeme bilgilerini biz görmeyiz.",
+                  "Sentry (hata takibi): uygulama çöktüğünde cihaz modeli, işletim sistemi sürümü ve hata ayrıntısı. Fotoğraf ve gardırop içeriği gönderilmez.",
+                  "PostHog (kullanım istatistiği; AB): yalnızca Profil’de izin verirsen, hangi ekranların kullanıldığı gibi olaylar."
+                ]
+              },
+              {
+                "kind": "p",
+                "text": "Fotoğrafların analiz için yurt dışına (ABD) aktarılması açık rızana dayanır ve ilk fotoğrafı göndermeden önce ayrıca sorulur. Rızanı vermezsen parçaları elle etiketleyebilir, öneri ve gardırop özelliklerini kullanmaya devam edebilirsin."
+              }
+            ]
+          },
+          {
+            "heading": "Ne kadar saklıyoruz",
+            "blocks": [
+              {
+                "kind": "list",
+                "items": [
+                  "Hesabın ve gardırobun: hesabını silene kadar.",
+                  "Kombin fotoğrafları: sunucuda hiç saklanmaz; cihazında, sen silene kadar.",
+                  "Toplu etiketleme sonuçları yapay zekâ sağlayıcısında en fazla 29 gün kalır; hesabını silersen silinmesi istenir.",
+                  "Çökme raporları: en fazla 90 gün."
+                ]
+              }
+            ]
+          },
+          {
+            "heading": "Hesabını ve verini silmek",
+            "blocks": [
+              {
+                "kind": "p",
+                "text": "Profil > Hesabı sil ile hesabın, gardırobun, fotoğrafların, kombin ve skor geçmişin sunucudan kalıcı olarak silinir; cihazdaki veri de temizlenir. Mağazadaki abonelik ayrıca mağaza hesabından iptal edilmelidir."
+              },
+              {
+                "kind": "p",
+                "text": "Profil > Verilerini indir ile gardırobunu, geçmişini ve fotoğraflarını tek dosya olarak alabilirsin."
+              }
+            ]
+          },
+          {
+            "heading": "Çocuklar",
+            "blocks": [
+              {
+                "kind": "p",
+                "text": "Clothes 13 yaşından küçükler için tasarlanmadı ve bilerek onlardan veri toplamıyoruz."
+              }
+            ]
+          },
+          {
+            "heading": "Hakların",
+            "blocks": [
+              {
+                "kind": "p",
+                "text": "KVKK’nın 11. maddesi ve GDPR kapsamında verine erişme, düzeltme, silme, işlemeyi kısıtlama, taşıma ve itiraz etme hakların var. Rızaya dayanan işlemelerde rızanı her zaman geri alabilirsin. Ayrıntılar: KVKK Aydınlatma Metni."
+              }
+            ]
+          },
+          {
+            "heading": "Değişiklikler",
+            "blocks": [
+              {
+                "kind": "p",
+                "text": "Bu politika değişirse uygulamada duyururuz; verinin işlenme biçimini esaslı olarak değiştiren bir değişiklikte yeniden onayını isteriz."
+              }
+            ]
+          }
+        ]
+      },
+      "terms": {
+        "key": "terms",
+        "title": "Kullanım Koşulları",
+        "slug": "kosullar",
+        "sections": [
+          {
+            "heading": "Hizmet",
+            "blocks": [
+              {
+                "kind": "p",
+                "text": "Clothes; gardırobunu dijitalleştirmen, hava durumuna göre kombin önerisi alman ve kombinlerini yapay zekâ ile puanlatman için bir uygulamadır. Uygulamayı kullanarak bu koşulları kabul etmiş olursun."
+              }
+            ]
+          },
+          {
+            "heading": "Yapay zekâ çıktıları",
+            "blocks": [
+              {
+                "kind": "p",
+                "text": "Etiketler, öneriler ve puanlar otomatik üretilir; yanlış ya da eksik olabilir ve kişisel tavsiye niteliği taşımaz. Puanlama yalnızca kıyafetler hakkındadır. Uygunsuz bulduğun bir sonucu sonuç ekranındaki \"Bu sonucu bildir\" ile bize iletebilirsin."
+              }
+            ]
+          },
+          {
+            "heading": "İçeriğin",
+            "blocks": [
+              {
+                "kind": "list",
+                "items": [
+                  "Yüklediğin fotoğrafların sahibi sensin. Hizmeti sunmak için (saklama, analiz, eşitleme) bize sınırlı bir kullanım izni verirsin.",
+                  "Başkasının fotoğrafını onun izni olmadan, 13 yaşından küçük birinin fotoğrafını ya da yasa dışı içerik yükleme.",
+                  "Paylaşım kartını paylaştığında içeriğin paylaştığın platformun kurallarına tabidir."
+                ]
+              }
+            ]
+          },
+          {
+            "heading": "Ücretsiz katman ve Pro",
+            "blocks": [
+              {
+                "kind": "list",
+                "items": [
+                  "Ücretsiz katmanda gardırop ve aylık puanlama ile etiketleme sınırları vardır; sınırlar her ayın başında yenilenir.",
+                  "Pro aboneliği App Store ya da Google Play üzerinden satın alınır ve ödeme mağaza hesabından alınır.",
+                  "Abonelik, dönem bitmeden en az 24 saat önce iptal edilmezse aynı süre ve fiyatla kendiliğinden yenilenir. İptal ve iade mağazanın kurallarına tabidir ve mağaza hesap ayarlarından yapılır.",
+                  "Pro’da sınırlar makul kullanım içindir; otomatik ya da kötüye kullanım tespit edilirse sınırlanabilir."
+                ]
+              }
+            ]
+          },
+          {
+            "heading": "Hesap",
+            "blocks": [
+              {
+                "kind": "p",
+                "text": "Uygulama giriş yapmadan da çalışır. Hesabını ve verini istediğin zaman Profil > Hesabı sil ile silebilirsin. Koşulları ciddi biçimde ihlal eden hesapları kapatma hakkımız saklıdır."
+              }
+            ]
+          },
+          {
+            "heading": "Sorumluluk",
+            "blocks": [
+              {
+                "kind": "p",
+                "text": "Hizmeti olduğu gibi sunuyoruz ve kesintisiz ya da hatasız olacağını taahhüt etmiyoruz. Yürürlükteki tüketici mevzuatının sana tanıdığı haklar saklıdır."
+              }
+            ]
+          },
+          {
+            "heading": "Uygulanacak hukuk",
+            "blocks": [
+              {
+                "kind": "p",
+                "text": "Bu koşullar Türkiye Cumhuriyeti hukukuna tabidir; tüketici olarak yerleşim yerindeki tüketici hakem heyeti ve mahkemelere başvurabilirsin."
+              }
+            ]
+          }
+        ]
+      },
+      "kvkk": {
+        "key": "kvkk",
+        "title": "KVKK Aydınlatma Metni",
+        "slug": "kvkk",
+        "sections": [
+          {
+            "heading": "Veri sorumlusu",
+            "blocks": [
+              {
+                "kind": "p",
+                "text": "6698 sayılı Kişisel Verilerin Korunması Kanunu (\"KVKK\") uyarınca veri sorumlusu Shinify LLC’dir (\"Clothes\")."
+              }
+            ]
+          },
+          {
+            "heading": "İşlenen kişisel veriler ve amaçları",
+            "blocks": [
+              {
+                "kind": "list",
+                "items": [
+                  "Kimlik ve iletişim (e-posta, Apple/Google’dan gelen ad): hesabın oluşturulması ve kurtarılması.",
+                  "Görsel veriler (parça ve kombin fotoğrafları): gardırobun oluşturulması, yapay zekâ ile etiketleme ve kombin puanlama.",
+                  "Konum (kaba, yuvarlanmış): hava durumuna göre kombin önerisi.",
+                  "Kullanım ve işlem kayıtları (gardırop, giyim günlüğü, skorlar, tercihler, abonelik): hizmetin sunulması, sözleşmenin ifası, kotaların uygulanması.",
+                  "Teknik veriler (çökme raporları; izin verilirse kullanım istatistikleri): hizmetin güvenliği ve iyileştirilmesi."
+                ]
+              }
+            ]
+          },
+          {
+            "heading": "Hukuki sebepler",
+            "blocks": [
+              {
+                "kind": "list",
+                "items": [
+                  "Sözleşmenin kurulması ve ifası (KVKK m. 5/2-c): hesap, gardırop, öneri, abonelik.",
+                  "Meşru menfaat (m. 5/2-f): çökme raporları ve hizmet güvenliği.",
+                  "Açık rıza (m. 5/1 ve m. 9): fotoğrafların yapay zekâ analizi için yurt dışındaki hizmet sağlayıcıya aktarılması; kullanım istatistikleri."
+                ]
+              }
+            ]
+          },
+          {
+            "heading": "Aktarım",
+            "blocks": [
+              {
+                "kind": "p",
+                "text": "Kişisel veriler, hizmetin yürütülmesi için şu alıcı gruplarına aktarılır:"
+              },
+              {
+                "kind": "list",
+                "items": [
+                  "Supabase (barındırma, veritabanı, dosya depolama; AB/İrlanda bölgesi): hesap, gardırop, kombin ve kullanım kayıtları, parça fotoğrafları.",
+                  "Anthropic (yapay zekâ ile görsel analiz; ABD): parça fotoğrafı etiketleme ve kombin puanlama için gönderilen fotoğraflar. Fotoğraflar model eğitiminde kullanılmaz.",
+                  "Open-Meteo (hava durumu): yaklaşık 1 km’ye yuvarlanmış konum. Kim olduğun gönderilmez.",
+                  "RevenueCat (abonelik yönetimi; ABD) ile Apple ve Google: satın alma kayıtları ve hesap kimliğin. Ödeme bilgilerini biz görmeyiz.",
+                  "Sentry (hata takibi): uygulama çöktüğünde cihaz modeli, işletim sistemi sürümü ve hata ayrıntısı. Fotoğraf ve gardırop içeriği gönderilmez.",
+                  "PostHog (kullanım istatistiği; AB): yalnızca Profil’de izin verirsen, hangi ekranların kullanıldığı gibi olaylar."
+                ]
+              },
+              {
+                "kind": "p",
+                "text": "Yurt dışına aktarım, KVKK m. 9 kapsamında açık rızana ve/veya standart sözleşmelere dayanır. Fotoğraf analizi için rızanı vermezsen fotoğraflar yurt dışına gönderilmez; parçaları elle etiketleyebilirsin."
+              }
+            ]
+          },
+          {
+            "heading": "Toplama yöntemi",
+            "blocks": [
+              {
+                "kind": "p",
+                "text": "Veriler uygulama üzerinden, senin girdiğin bilgiler, çektiğin ya da seçtiğin fotoğraflar ve izin verdiğin cihaz özellikleri (kamera, konum) aracılığıyla elektronik ortamda toplanır."
+              }
+            ]
+          },
+          {
+            "heading": "Hakların (KVKK m. 11)",
+            "blocks": [
+              {
+                "kind": "list",
+                "items": [
+                  "Kişisel verinin işlenip işlenmediğini öğrenme ve bilgi talep etme,",
+                  "İşleme amacını ve amaca uygun kullanılıp kullanılmadığını öğrenme,",
+                  "Yurt içinde ve yurt dışında aktarıldığı üçüncü kişileri bilme,",
+                  "Eksik ya da yanlış işlenmişse düzeltilmesini, KVKK m. 7 şartlarıyla silinmesini isteme ve bu işlemlerin aktarılan üçüncü kişilere bildirilmesini isteme,",
+                  "Otomatik sistemlerle analiz sonucu aleyhine bir sonuç çıkmasına itiraz etme,",
+                  "Kanuna aykırı işleme sebebiyle zarara uğrarsan zararın giderilmesini talep etme."
+                ]
+              },
+              {
+                "kind": "p",
+                "text": "Hesabını uygulama içinden kalıcı olarak silebilir, verilerini uygulama içinden indirebilirsin. Diğer talepler en geç 30 gün içinde ücretsiz yanıtlanır."
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "en": {
+      "privacy": {
+        "key": "privacy",
+        "title": "Privacy Policy",
+        "slug": "privacy",
+        "sections": [
+          {
+            "heading": "Summary",
+            "blocks": [
+              {
+                "kind": "p",
+                "text": "Clothes stores your wardrobe on your device first. Only the data needed for cloud backup, cross-device sync, and AI features you explicitly trigger is sent to our servers. We show no ads, never sell your data, and never track you across other apps."
+              }
+            ]
+          },
+          {
+            "heading": "Data we process",
+            "blocks": [
+              {
+                "kind": "list",
+                "items": [
+                  "Account: a guest account ID created on your device; if you sign in, your email address or the name and email provided by Apple/Google.",
+                  "Wardrobe: garment photos and attributes (category, color, pattern, estimated fabric, formality, warmth value).",
+                  "Outfits: scores, feedback, and a cryptographic fingerprint (hash) of scored outfit photos so the same photo always gets the same score. Outfit photos themselves are never stored on our servers — they stay on your device.",
+                  "Wear log & preferences: what you wore on a given day, your “How was it?” warmth feedback, everyday style, and outdoor activity preferences.",
+                  "Location: only while the app is open, approximate (city-level) location rounded to ~1 km for weather forecasts; never stored. You can also select a city manually instead.",
+                  "Subscription: your Pro status and expiration date.",
+                  "Technical: crash reports; anonymous usage analytics only if you opt in."
+                ]
+              }
+            ]
+          },
+          {
+            "heading": "Why we process it",
+            "blocks": [
+              {
+                "kind": "list",
+                "items": [
+                  "To digitize your wardrobe and recognize garments from photos (auto-tagging).",
+                  "To recommend outfits for the weather; local recommendations are computed on your device.",
+                  "To score and give constructive feedback on outfits you choose to submit.",
+                  "To restore your wardrobe when you switch devices.",
+                  "To manage your subscription and monthly usage limits.",
+                  "To diagnose crashes and (if you opt in) improve the app."
+                ]
+              },
+              {
+                "kind": "p",
+                "text": "Scoring is strictly about the clothes: body, face, appearance, or physical traits are never evaluated or inferred."
+              }
+            ]
+          },
+          {
+            "heading": "Service providers we share with",
+            "blocks": [
+              {
+                "kind": "p",
+                "text": "We share only what is necessary with the following providers who run parts of the service on our behalf:"
+              },
+              {
+                "kind": "list",
+                "items": [
+                  "Supabase (hosting, database, file storage; EU/Ireland region): account, wardrobe, outfit and usage records, and garment photos.",
+                  "Anthropic (AI visual and style analysis; US): photos submitted for garment tagging and outfit scoring, plus wardrobe metadata when you choose AI outfit recommendations. Photos are never used to train AI models.",
+                  "Open-Meteo (weather): approximate location rounded to ~1 km. No personal identifiers are sent.",
+                  "RevenueCat (subscription management; US), Apple, and Google: purchase records and account identifier. We never see your payment card details.",
+                  "Sentry (crash reporting): device model, OS version, and crash diagnostics when an error occurs. Photos and wardrobe contents are never sent.",
+                  "PostHog (usage analytics; EU): only if enabled in Profile, anonymous events such as which screens are used."
+                ]
+              },
+              {
+                "kind": "p",
+                "text": "Sending photos internationally (US) for AI analysis relies on your explicit consent and is requested separately before your first upload. If you decline, you can still tag items manually and use the wardrobe and local recommendation features."
+              }
+            ]
+          },
+          {
+            "heading": "How long we keep data",
+            "blocks": [
+              {
+                "kind": "list",
+                "items": [
+                  "Account and wardrobe: until you delete your account.",
+                  "Outfit photos: never stored on our servers; kept on your device until you delete them.",
+                  "Batch tagging results stay with the AI provider for at most 29 days, and deletion is requested if you delete your account.",
+                  "Crash reports: up to 90 days."
+                ]
+              }
+            ]
+          },
+          {
+            "heading": "Deleting and exporting your data",
+            "blocks": [
+              {
+                "kind": "p",
+                "text": "Profile > Delete account permanently deletes your account, wardrobe, photos, and score history from our servers and clears your device. Store subscriptions must be canceled separately in your App Store or Google Play account settings."
+              },
+              {
+                "kind": "p",
+                "text": "Profile > Download your data exports your wardrobe, history, and photos in a single file."
+              }
+            ]
+          },
+          {
+            "heading": "Children",
+            "blocks": [
+              {
+                "kind": "p",
+                "text": "Clothes is not intended for children under 13, and we do not knowingly collect data from them."
+              }
+            ]
+          },
+          {
+            "heading": "Your rights",
+            "blocks": [
+              {
+                "kind": "p",
+                "text": "Under GDPR, KVKK (Article 11), and applicable privacy laws, you have the right to access, correct, delete, restrict, port, and object to the processing of your personal data, and to withdraw consent at any time. See the Privacy Notice (KVKK) for statutory details."
+              }
+            ]
+          },
+          {
+            "heading": "Changes",
+            "blocks": [
+              {
+                "kind": "p",
+                "text": "If we update this policy, we will notify you in the app; if a change materially alters how your data is processed, we will ask for your consent again."
+              }
+            ]
+          }
+        ]
+      },
+      "terms": {
+        "key": "terms",
+        "title": "Terms of Use",
+        "slug": "terms",
+        "sections": [
+          {
+            "heading": "The service",
+            "blocks": [
+              {
+                "kind": "p",
+                "text": "Clothes helps you digitize your wardrobe, get weather-based outfit suggestions, and score outfits with AI. By using the app, you agree to these terms."
+              }
+            ]
+          },
+          {
+            "heading": "AI outputs",
+            "blocks": [
+              {
+                "kind": "p",
+                "text": "Tags, recommendations, and scores are generated automatically; they may be inaccurate or incomplete and are for informational use only. Scoring is strictly about clothing. If a result is inappropriate, report it via “Report this result” on the score screen."
+              }
+            ]
+          },
+          {
+            "heading": "Your content",
+            "blocks": [
+              {
+                "kind": "list",
+                "items": [
+                  "You retain ownership of the photos you upload. You grant us a limited license solely to provide the service (storage, analysis, and syncing).",
+                  "Do not upload photos of anyone without their permission, photos of anyone under 13, or unlawful content.",
+                  "When you share a score card, your post is governed by the rules of the platform where you share it."
+                ]
+              }
+            ]
+          },
+          {
+            "heading": "Free plan and Pro",
+            "blocks": [
+              {
+                "kind": "list",
+                "items": [
+                  "The Free plan includes wardrobe size and monthly scoring/tagging limits; monthly limits reset at the start of each month.",
+                  "Pro subscriptions are purchased through the App Store or Google Play and billed to your store account.",
+                  "Subscriptions renew automatically at the same price and period unless canceled at least 24 hours before the end of the current period. Cancellations and refunds are handled through your store account settings under store rules.",
+                  "Pro limits are intended for fair personal use; automated or abusive usage may be restricted."
+                ]
+              }
+            ]
+          },
+          {
+            "heading": "Account",
+            "blocks": [
+              {
+                "kind": "p",
+                "text": "The app works without signing in. You can permanently delete your account and data anytime via Profile > Delete account. We reserve the right to suspend accounts that seriously violate these terms."
+              }
+            ]
+          },
+          {
+            "heading": "Liability",
+            "blocks": [
+              {
+                "kind": "p",
+                "text": "The service is provided “as is” without guarantees of uninterrupted or error-free operation. Mandatory rights granted to you under applicable consumer protection laws remain unaffected."
+              }
+            ]
+          },
+          {
+            "heading": "Governing law",
+            "blocks": [
+              {
+                "kind": "p",
+                "text": "These terms are governed by the laws of the Republic of Türkiye, without prejudice to mandatory consumer protection rules in your country of residence."
+              }
+            ]
+          }
+        ]
+      },
+      "kvkk": {
+        "key": "kvkk",
+        "title": "Privacy Notice (KVKK)",
+        "slug": "kvkk",
+        "sections": [
+          {
+            "heading": "Data controller",
+            "blocks": [
+              {
+                "kind": "p",
+                "text": "Under Law No. 6698 on the Protection of Personal Data (“KVKK”) and applicable data protection laws, the data controller is Shinify LLC (“Clothes”)."
+              }
+            ]
+          },
+          {
+            "heading": "Personal data processed and purposes",
+            "blocks": [
+              {
+                "kind": "list",
+                "items": [
+                  "Identity and contact (email, name provided by Apple/Google): account creation and recovery.",
+                  "Visual data (garment and outfit photos): building your wardrobe, AI tagging, and outfit scoring.",
+                  "Location (approximate, rounded): weather-based outfit suggestions.",
+                  "Usage and account records (wardrobe, wear log, scores, preferences, subscription): delivering the service, performing our agreement, and enforcing quotas.",
+                  "Technical data (crash reports; usage analytics if consented): service security and improvement."
+                ]
+              }
+            ]
+          },
+          {
+            "heading": "Legal bases",
+            "blocks": [
+              {
+                "kind": "list",
+                "items": [
+                  "Performance of a contract (KVKK Art. 5/2-c / GDPR Art. 6(1)(b)): account, wardrobe, recommendations, subscription.",
+                  "Legitimate interest (KVKK Art. 5/2-f / GDPR Art. 6(1)(f)): crash reporting and service security.",
+                  "Explicit consent (KVKK Art. 5/1 & Art. 9 / GDPR Art. 6(1)(a)): transferring photos abroad for AI analysis; optional usage analytics."
+                ]
+              }
+            ]
+          },
+          {
+            "heading": "International transfers",
+            "blocks": [
+              {
+                "kind": "p",
+                "text": "Personal data is shared only as needed with the following recipient categories:"
+              },
+              {
+                "kind": "list",
+                "items": [
+                  "Supabase (hosting, database, file storage; EU/Ireland region): account, wardrobe, outfit and usage records, and garment photos.",
+                  "Anthropic (AI visual and style analysis; US): photos submitted for garment tagging and outfit scoring, plus wardrobe metadata when you choose AI outfit recommendations. Photos are never used to train AI models.",
+                  "Open-Meteo (weather): approximate location rounded to ~1 km. No personal identifiers are sent.",
+                  "RevenueCat (subscription management; US), Apple, and Google: purchase records and account identifier. We never see your payment card details.",
+                  "Sentry (crash reporting): device model, OS version, and crash diagnostics when an error occurs. Photos and wardrobe contents are never sent.",
+                  "PostHog (usage analytics; EU): only if enabled in Profile, anonymous events such as which screens are used."
+                ]
+              },
+              {
+                "kind": "p",
+                "text": "International transfers rely on your explicit consent and/or standard contractual safeguards. If you do not consent to AI photo analysis, photos are not sent to the AI provider and you can tag items manually."
+              }
+            ]
+          },
+          {
+            "heading": "Collection method",
+            "blocks": [
+              {
+                "kind": "p",
+                "text": "Data is collected electronically through the app based on the information you enter, photos you capture or select, and device permissions you grant (camera, location)."
+              }
+            ]
+          },
+          {
+            "heading": "Your rights (KVKK Art. 11 & GDPR)",
+            "blocks": [
+              {
+                "kind": "list",
+                "items": [
+                  "To learn whether your personal data is processed and request information about it,",
+                  "To learn the purpose of processing and whether it is used accordingly,",
+                  "To know the domestic or international third parties to whom data is transferred,",
+                  "To request rectification of incomplete or inaccurate data, deletion under applicable law, and notification of such actions to third-party recipients,",
+                  "To object to adverse outcomes resulting solely from automated analysis,",
+                  "To seek compensation for damages caused by unlawful processing."
+                ]
+              },
+              {
+                "kind": "p",
+                "text": "You can permanently delete your account or export your data directly inside the app. Other requests are answered free of charge within 30 days."
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

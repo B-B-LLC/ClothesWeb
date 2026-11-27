@@ -1,2 +1,5 @@
-# Sitede yayınlanmasına gerek olmayan dosyalar
+# Sitede yayınlanmasına gerek olmayan dosyalar: belgeler ve üretici kaynakları
 README.md
+build.mjs
+src
+content
